@@ -1,0 +1,23 @@
+name: BanglaJomi APK Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check uploaded ZIP
+        run: |
+          ls -la
+          unzip -l BanglaJomiApp-Mobile-Cloud-Build.zip
+
+      - name: Upload project ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: BanglaJomi-project
+          path: BanglaJomiApp-Mobile-Cloud-Build.zip
